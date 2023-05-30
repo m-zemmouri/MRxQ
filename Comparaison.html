@@ -1,14 +1,20 @@
 ﻿<html>
-	<head>
-		<meta charset="utf-8" />
-		<script src="https://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/modules/data.js"></script>
-		<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	</head>
 
-	<body>
-		<div id="container_time"></div>
-		<pre id="csv_time" style="display: none">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+
+<body>
+  <div id="container_time"></div>
+
+  <div id="container_gain_Avg"></div>
+
+  <div id="container_All"></div>
+
+  <pre id="csv_time" style="display: none">
         Data_Length,Standard, MRxQ
         440,414,5
         879,42,18
@@ -214,10 +220,9 @@
         126580774,16351,5956
         128025194,15959,5679
         129468352,16053,6083
-    </pre
-		>
-		<div id="container_gain_Avg"></div>
-		<pre id="csv_gain_Avg" style="display: none">
+    </pre>
+
+  <pre id="csv_gain_Avg" style="display: none">
         Data_Length,Average Gain,Gain
         440,0.030137794,409
         879,0.060207093,24
@@ -423,68 +428,315 @@
         126580774,8670.148387,10395
         128025194,8769.083916,10280
         129468352,8867.933003,9970
-    </pre
-		>
-	</body>
+    </pre>
+  <pre id="csv_All" style="display: none">
+    Data_Length,Standard,MRxQ,Average Gain
+    440,414,5,0.030137794
+    879,42,18,0.060207093
+    1318,52,58,0.090276392
+    1757,68,55,0.120345691
+    2196,60,36,0.15041499
+    2635,57,74,0.180484289
+    3074,26,35,0.210553588
+    3514,22,40,0.240691382
+    3954,17,67,0.270829176
+    4393,23,53,0.300898475
+    4835,59,101,0.331173259
+    5278,28,68,0.361516538
+    5718,40,92,0.391654332
+    6159,25,91,0.421860621
+    6599,35,178,0.451998415
+    7038,57,77,0.482067714
+    7477,27,116,0.512137013
+    7917,64,155,0.542274807
+    8357,49,120,0.572412601
+    8797,28,116,0.602550395
+    9237,32,116,0.632688189
+    9677,41,139,0.662825983
+    10121,41,129,0.693237757
+    10565,39,114,0.723649531
+    11006,54,113,0.75385582
+    11447,48,114,0.784062109
+    11888,21,215,0.814268398
+    12328,21,151,0.844406192
+    12768,40,178,0.874543986
+    13209,47,148,0.904750275
+    13650,22,150,0.934956564
+    14091,40,166,0.965162853
+    14532,47,144,0.995369142
+    14972,36,168,1.025506936
+    15416,42,147,1.05591871
+    15860,41,191,1.086330484
+    16301,50,231,1.116536772
+    16742,40,176,1.146743061
+    17183,52,191,1.17694935
+    17623,42,201,1.207087144
+    18063,51,200,1.237224938
+    18504,43,212,1.267431227
+    18945,42,184,1.297637516
+    19386,37,224,1.327843805
+    19827,29,239,1.358050094
+    20267,49,253,1.388187888
+    20711,44,220,1.418599662
+    21155,46,251,1.449011436
+    21596,45,220,1.479217725
+    22037,45,274,1.509424014
+    22478,46,264,1.539630303
+    22918,41,256,1.569768097
+    23358,41,303,1.599905891
+    23799,46,270,1.63011218
+    24240,49,357,1.660318469
+    24681,47,239,1.690524758
+    25122,104,299,1.720731047
+    25562,51,318,1.750868841
+    26006,49,283,1.781280615
+    26450,68,303,1.811692389
+    26891,82,392,1.841898678
+    27332,39,298,1.872104967
+    27773,50,291,1.902311256
+    28213,64,355,1.93244905
+    28653,64,353,1.962586844
+    29094,40,322,1.992793133
+    29535,154,357,2.022999422
+    29976,45,378,2.053205711
+    30417,61,331,2.083412
+    30857,54,349,2.113549794
+    31301,67,400,2.143961568
+    31745,50,401,2.174373342
+    32186,77,353,2.204579631
+    32627,66,361,2.23478592
+    33068,55,409,2.264992209
+    33508,56,371,2.295130003
+    33948,67,372,2.325267797
+    34389,68,439,2.355474086
+    34830,57,411,2.385680375
+    35271,54,425,2.415886664
+    35712,47,470,2.446092953
+    36152,59,475,2.476230747
+    36596,73,418,2.50664252
+    37040,72,443,2.537054294
+    37481,63,406,2.567260583
+    37922,31,385,2.597466872
+    38363,30,484,2.627673161
+    38803,22,455,2.657810955
+    39243,24,474,2.687948749
+    39684,72,459,2.718155038
+    40125,59,535,2.748361327
+    40566,56,440,2.778567616
+    41007,54,560,2.808773905
+    41447,58,578,2.838911699
+    41891,51,486,2.869323473
+    42335,58,446,2.899735247
+    42776,180,585,2.929941536
+    43217,59,512,2.960147825
+    43659,63,499,2.990422609
+    44099,50,574,3.020560403
+    44539,64,607,3.050698197
+    44981,59,509,3.080972981
+    958973,235,67,65.68484255
+    1929962,223,117,132.1927208
+    2893041,323,147,198.1588038
+    3850491,317,235,263.7393285
+    4818685,440,239,330.0557633
+    5792677,519,251,396.769332
+    6797712,612,280,465.6091907
+    7797129,578,348,534.0642444
+    8791009,662,465,602.1400415
+    9808079,735,594,671.8042372
+    10843967,1158,455,742.7573716
+    11913795,1091,529,816.0352259
+    13036639,990,564,892.9444104
+    14167521,1042,626,970.4041575
+    15352051,1080,728,1051.538524
+    16541104,1118,828,1132.982693
+    17692172,1262,840,1211.82508
+    18873484,1279,797,1292.739029
+    20013550,1385,864,1370.827834
+    21195266,2644,923,1451.769455
+    22359416,2865,996,1531.507894
+    23539382,2115,1112,1612.329649
+    24732328,2668,1065,1694.040469
+    25936289,2551,1567,1776.505761
+    27141419,3567,1289,1859.051124
+    28331109,3212,1187,1940.538924
+    29514370,2438,1355,2021.58637
+    30706290,2923,1430,2103.226914
+    31892599,3149,1348,2184.483133
+    33088789,3611,1492,2266.416151
+    34283976,3276,1517,2348.280468
+    35481714,3377,1600,2430.319516
+    36670883,3681,1665,2511.771631
+    37852245,4069,1617,2592.689005
+    39106005,3940,1651,2678.565279
+    40354601,4388,2052,2764.087845
+    41608849,4251,3009,2849.997544
+    42867345,8924,1876,2936.198211
+    44153921,4333,2086,3024.322216
+    45412293,4966,1939,3110.514389
+    46674047,4877,2395,3196.938212
+    47930395,5020,2325,3282.991751
+    49189331,5383,2299,3369.222555
+    50443988,6409,3807,3455.16027
+    51700232,6220,2337,3541.206685
+    52942227,5559,2409,3626.277116
+    54226684,6060,2335,3714.25598
+    55540289,6027,2983,3804.231337
+    56824923,7856,2758,3892.222325
+    58108762,7289,3223,3980.15886
+    59385679,7213,2947,4067.621273
+    60684102,7836,3011,4156.556738
+    61964798,7082,2788,4244.277993
+    63270675,7430,2778,4333.724021
+    64559682,7475,3236,4422.014537
+    65897580,7097,3196,4513.653843
+    67245438,7410,3633,4605.975358
+    68570174,8490,3023,4696.713132
+    69919722,8605,3170,4789.150404
+    71283922,8280,3299,4882.591264
+    72628870,8726,3184,4974.713459
+    73978746,8609,3336,5067.173197
+    75335685,8843,3564,5160.116716
+    76670504,8962,3559,5251.545125
+    78028424,9812,7755,5344.555837
+    79398031,12133,6803,5438.36705
+    80743954,12389,5816,5530.556027
+    82090375,13120,6068,5622.779115
+    83464221,11278,5778,5716.880678
+    84815869,12820,6559,5809.461789
+    86191761,11111,5181,5903.703493
+    87590652,12474,4114,5999.520513
+    88961843,12359,5307,6093.440222
+    90359216,11434,4521,6189.153267
+    91743249,13797,5588,6283.952588
+    93107528,12097,4870,6377.398859
+    94467596,17327,4733,6470.556699
+    95818250,15510,5008,6563.069726
+    97170343,12378,5230,6655.681317
+    98534574,13126,5043,6749.124301
+    99927751,12149,5830,6844.549941
+    101281514,14841,7201,6937.275919
+    102635562,13548,6590,7030.021418
+    104012315,13715,7507,7124.322096
+    105385496,13821,5673,7218.37811
+    106753547,13370,6441,7312.082745
+    108123458,13425,6201,7405.91478
+    109519191,15484,6638,7501.515493
+    110923506,14215,7163,7597.704029
+    112310295,15179,8141,7692.692123
+    113704485,16226,8511,7788.187148
+    115108586,17697,9537,7884.361027
+    116500534,18065,8586,7979.702486
+    117912335,16494,5766,8076.403776
+    119342344,15946,6027,8174.352223
+    120790652,14940,6277,8273.55406
+    122224572,17247,6710,8371.770391
+    123677499,15680,6088,8471.288606
+    125133289,16567,6702,8571.002922
+    126580774,16351,5956,8670.148387
+    128025194,15959,5679,8769.083916
+    129468352,16053,6083,8867.933003
+    </pre>
+</body>
+
 </html>
 <script>
-	Highcharts.chart('container_time', {
-		title: { text: 'MRxQ Vs Standard Execution Time', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		subtitle: { text: 'According to data output size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		yAxis: {
-			title: { text: 'Execution Time (Ms)', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-			labels: { style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		},
-		xAxis: {
-			title: { text: 'Retrieved data size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-			labels: { style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		},
-		credits: { text: ' ' },
-		data: {
-			csv: document.getElementById('csv_time').innerHTML,
-		},
-		series: [
-			{
-				type: 'areaspline',
-				color: '#FF9655',
-				fillOpacity: 0.5,
-			},
-			{
-				type: 'areaspline',
-				color: '#50B432',
-				fillOpacity: 0.5,
-			},
-		],
-	})
+  Highcharts.chart('container_time', {
+    title: { text: 'MRxQ Vs Standard Execution Time', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    subtitle: { text: 'According to data output size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    yAxis: {
+      title: { text: 'Execution Time (Ms)', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    xAxis: {
+      title: { text: 'Retrieved data size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    credits: { text: ' ' },
+    data: {
+      csv: document.getElementById('csv_time').innerHTML,
+    },
+    series: [
+      {
+        type: 'areaspline',
+        color: '#FF9655',
+        fillOpacity: 0.5,
+      },
+      {
+        type: 'areaspline',
+        color: '#50B432',
+        fillOpacity: 0.5,
+      },
+    ],
+  })
 
-	Highcharts.chart('container_gain_Avg', {
-		title: { text: 'MRxQ optimization gain', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		subtitle: { text: 'According to data output size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		yAxis: {
-			title: { text: 'Gain Time (Ms)', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-			labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		},
-		xAxis: {
-			title: { text: 'Retrieved data size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
-			labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
-		},
-		credits: { text: ' ' },
-		data: {
-			csv: document.getElementById('csv_gain_Avg').innerHTML,
-		},
-		series: [
-			{
-				type: 'line',
-				color: '#3AB0FF',
-				//dashStyle: 'shortdot',
-				lineWidth: 3,
-			},
-			{
-				type: 'areaspline',
-				color: '#50B432',
-				negativeColor: '#FF9655',
-				fillOpacity: 0.5,
-			},
-		],
-	})
+  Highcharts.chart('container_gain_Avg', {
+    title: { text: 'MRxQ optimization gain', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    subtitle: { text: 'According to data output size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    yAxis: {
+      title: { text: 'Gain Time (Ms)', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    xAxis: {
+      title: { text: 'Retrieved data size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    credits: { text: ' ' },
+    data: {
+      csv: document.getElementById('csv_gain_Avg').innerHTML,
+    },
+    series: [
+      {
+        type: 'line',
+        color: '#3AB0FF',
+        //dashStyle: 'shortdot',
+        lineWidth: 3,
+      },
+      {
+        type: 'areaspline',
+        color: '#50B432',
+        negativeColor: '#FF9655',
+        fillOpacity: 0.5,
+      },
+    ],
+  })
+
+  Highcharts.chart('container_All', {
+    title: { text: 'MRxQ Vs Standard Execution Time', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    subtitle: { text: 'According to data output size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    yAxis: {
+      title: { text: 'Time (Ms)', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    xAxis: {
+      title: { text: 'Retrieved data size', style: { fontWeight: 'bold' /* , color: 'black' */ } },
+      labels: { style: { fontWeight: 'bold' }, style: { fontWeight: 'bold' /* , color: 'black' */ } },
+    },
+    credits: { text: ' ' },
+    data: {
+      csv: document.getElementById('csv_All').innerHTML,
+    },
+    series: [{
+      type: 'areaspline',
+      color: '#FF9655',
+      fillOpacity: 0.5,
+    },
+    {
+      type: 'areaspline',
+      color: '#50B432',
+      fillOpacity: 0.5,
+    },
+    {
+      type: 'line',
+      color: '#3AB0FF',
+      //dashStyle: 'shortdot',
+      lineWidth: 3,
+    },
+    // {
+    //   type: 'areaspline',
+    //   color: '#50B432',
+    //   negativeColor: '#FF9655',
+    //   fillOpacity: 0.5,
+    // },
+    ],
+  })
 </script>
